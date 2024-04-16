@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:islamic/pages/home_screen/home_screen.dart';
 import 'package:islamic/pages/splach_screen.dart';
 
+import 'core/theme.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Islamic',
+      theme: ThemeApplications.light,
       initialRoute: Splash.routName,
       routes: {
         Splash.routName: (context) => Splash(),
