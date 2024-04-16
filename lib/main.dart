@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/pages/home_screen/home_screen.dart';
 import 'package:islamic/pages/splach_screen.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Islamic',
       initialRoute: Splash.routName,
       routes: {
-        Splash.routName: (context)=> Splash(),
+        Splash.routName: (context) => Splash(),
+        Home.routeName: (context) => Home(),
       },
     );
   }
