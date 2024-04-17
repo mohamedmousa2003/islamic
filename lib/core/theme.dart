@@ -9,22 +9,27 @@ class ThemeApplications {
         backgroundColor: transparentColor,
         elevation: 0,
         centerTitle: true,
-      ),
+        foregroundColor: transparentColor),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: primaryLight,
           selectedItemColor: blackColor,
           unselectedItemColor: whiteColor,
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: false,
-          selectedIconTheme: IconThemeData(
-            color: blackColor,
-            size: 25,
-          ),
-          unselectedIconTheme: IconThemeData(color: whiteColor, size: 28)),
-      textTheme: const TextTheme(
-        titleLarge: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
+        selectedIconTheme: IconThemeData(
+          color: blackColor,
+          size: 25,
         ),
-      ));
+        unselectedIconTheme: IconThemeData(color: whiteColor, size: 28)),
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  );
 }
