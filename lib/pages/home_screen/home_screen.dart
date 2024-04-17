@@ -1,17 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/pages/hadeth/hadeth_screen.dart';
+import 'package:islamic/pages/quran/quran_screen.dart';
+import 'package:islamic/pages/radio/radio_screen.dart';
+import 'package:islamic/pages/setting/setting_screen.dart';
 
-class Home extends StatelessWidget {
+import '../../core/app_color.dart';
+import '../sebha/sebha.dart';
+
+class Home extends StatefulWidget {
   static String routeName = "home";
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int selectedIndex = 0;
+  List<Widget> screen = [
+    Setting(),
+    Quran(),
+    Hadeth(),
+    RadioScreen(),
+    Sebha(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage("assets/light_images/background.png"),
+    var theme = Theme.of(context);
+
+    return Stack(
+      children: [
+        Image.asset("assets/images/background_light.png", fit: BoxFit.cover),
+        Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "Islamic",
+              style: theme.textTheme.titleLarge,
+            ),
+          ),
+          body: screen.elementAt(selectedIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: blackColor,
+            currentIndex: selectedIndex,
+            onTap: (value) {
+              selectedIndex = value;
+              setState(() {});
+            },
+            items: [
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: "Setting",
+              ),
+              BottomNavigationBarItem(
+                  icon: Image.asset("assets/images/quran.png"), label: "Quran"),
+              BottomNavigationBarItem(
+                  icon:
+                      Image.asset("assets/images/quran-quran-svgrepo-com.png"),
+                  label: "Health"),
+              BottomNavigationBarItem(
+                  icon: Image.asset("assets/images/radio.png"), label: "Radio"),
+              BottomNavigationBarItem(
+                  icon: Image.asset("assets/images/sebha_icon.png"),
+                  label: "Sebiha"),
+            ],
+          ),
         ),
-      ),
-      child: Scaffold(),
+      ],
     );
   }
 }
