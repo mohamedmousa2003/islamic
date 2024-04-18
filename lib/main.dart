@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Islamic',
       theme: ThemeApplications.light,
-      initialRoute: Splash.routName,
+      initialRoute: Home.routeName,
+      //Test.routename,
       routes: {
+        //Test.routename :(context) => Test(),
         Splash.routName: (context) => Splash(),
         Home.routeName: (context) => Home(),
       },

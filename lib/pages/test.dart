@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamic/pages/quran/widget/dvider.dart';
 import 'package:islamic/pages/quran/widget/text.dart';
 
-class Quran extends StatelessWidget {
+class Test extends StatelessWidget {
   List<String> SurahNameArabic = [
     "الفَاتِحَة",
     "البَقَرَة",
@@ -237,60 +237,86 @@ class Quran extends StatelessWidget {
     "an-naas",
   ];
 
+  static String routename = "test";
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
-      children: [
-        Image.asset("assets/images/quran_image.png"),
-        Expanded(
-          child: ListView.builder(
-            itemCount: SurahNameArabic.length,
-            itemBuilder: (contex, index) {
-              return Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    padding: EdgeInsets.only(left: 5),
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
+          children: [
+            Image.asset("assets/images/quran_image.png"),
+            Expanded(
+              child: ListView.builder(
+                itemCount: SurahNameArabic.length,
+                itemBuilder: (contex, index) {
+                  return Column(
+                    children: [
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                        padding: EdgeInsets.only(left: 5),
+                        height: 60,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
                           children: [
-                            Image.asset("assets/images/pngwing.com.png"),
-                            Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "${index + 1}",
-                                  style: theme.textTheme.titleMedium
-                                      ?.copyWith(fontSize: 20),
-                                )),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: <Widget>[
+                                Image.asset("assets/images/pngwing.com.png"),
+                                SizedBox(
+                                  width: 4,
+                                ),
+                                Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${index + 1}",
+                                      style: theme.textTheme.titleMedium
+                                          ?.copyWith(fontSize: 20),
+                                    )),
+                              ],
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.1,
+                            ),
+                            TextTitle(text: "${SurahNameEnglish[index]}"),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.1,
+                            ),
+                            TextTitle(text: "${SurahNameArabic[index]}"),
                           ],
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.1,
-                        ),
-                        TextTitle(text: "${SurahNameEnglish[index]}"),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.1,
-                        ),
-                        TextTitle(text: "${SurahNameArabic[index]}"),
-                      ],
-                    ),
-                  ),
-                  DividerLine(),
-                ],
-              );
-            },
-          ),
-        ),
-      ],
-    ));
+                      ),
+                      DividerLine(),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ));
   }
 }
+
+/*
+Column(
+        children: [
+          Image.asset("assets/images/quran_image.png"),
+          Divider(
+            color: primaryLight,
+            thickness: 3,
+          ),
+          Row(
+            children: [
+              Text("ccccc"),
+
+            ],
+          ),
+        ],
+      ),
+
+*/
