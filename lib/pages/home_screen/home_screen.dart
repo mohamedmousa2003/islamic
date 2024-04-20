@@ -52,15 +52,16 @@ class _HomeState extends State<Home> {
                 label: "Setting",
               ),
               BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/quran.png"), label: "Quran"),
+                  icon: ImageIcon(AssetImage("assets/images/quran.png")),
+                  label: "Quran"),
               BottomNavigationBarItem(
-                  icon:
-                      Image.asset("assets/images/quran-quran-svgrepo-com.png"),
+                  icon: ImageIcon(AssetImage("assets/images/hadeth.png")),
                   label: "Health"),
               BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/radio.png"), label: "Radio"),
+                  icon: ImageIcon(AssetImage("assets/images/radio.png")),
+                  label: "Radio"),
               BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/sebha_icon.png"),
+                  icon: ImageIcon(AssetImage("assets/images/sebha.png")),
                   label: "Sebiha"),
             ],
           ),

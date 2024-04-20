@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islamic/pages/quran/widget/dvider.dart';
 import 'package:islamic/pages/quran/widget/text.dart';
+import 'package:islamic/widget/dvider.dart';
 
 class Quran extends StatelessWidget {
   List<String> SurahNameArabic = [
