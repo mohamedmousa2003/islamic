@@ -28,11 +28,12 @@ class _SebhaState extends State<Sebha> {
         children: [
           Center(
             child: InkWell(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               onTap: () {
                 value++;
                 if (value == 33) {
                   value = 0;
-
                   if (text.length == index + 1) {
                     index = 0;
                   } else {
