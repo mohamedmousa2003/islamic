@@ -1,3 +1,4 @@
+import 'package:audiofileplayer/audiofileplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic/core/app_color.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -34,8 +35,14 @@ class _SebhaState extends State<Sebha> {
                 value++;
                 if (value == 33) {
                   value = 0;
+                  final player = Audio.load(
+                      'assets/sound/mixkit-retro-game-notification-212.wav');
+                  player.play();
                   if (text.length == index + 1) {
                     index = 0;
+                    final player = Audio.load(
+                        'assets/sound/mixkit-fast-small-sweep-transition-166.wav');
+                    player.play();
                   } else {
                     index += 1;
                   }

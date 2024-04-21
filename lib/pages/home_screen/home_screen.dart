@@ -6,7 +6,6 @@ import 'package:islamic/pages/setting/setting_screen.dart';
 
 import '../../core/app_color.dart';
 import '../sebha/sebha.dart';
-
 class Home extends StatefulWidget {
   static String routeName = "home";
 
@@ -27,10 +26,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-
+    var mediaQuery = MediaQuery.of(context).size;
     return Stack(
       children: [
-        Image.asset("assets/images/background_light.png", fit: BoxFit.cover),
+        Image.asset(
+          "assets/images/background_light.png",
+          fit: BoxFit.fill,
+          height: mediaQuery.height,
+          width: mediaQuery.width,
+        ),
         Scaffold(
           appBar: AppBar(
             title: Text(
@@ -46,8 +50,8 @@ class _HomeState extends State<Home> {
               selectedIndex = value;
               setState(() {});
             },
-            items: [
-              const BottomNavigationBarItem(
+            items: const [
+              BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
                 label: "Setting",
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/pages/quran/quran_details_view.dart';
 import 'package:islamic/pages/quran/widget/text.dart';
 import 'package:islamic/widget/dvider.dart';
 
@@ -236,61 +237,83 @@ class Quran extends StatelessWidget {
     "al-falaq",
     "an-naas",
   ];
-
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
-        body: Column(
-      children: [
-        Image.asset("assets/images/quran_image.png"),
-        Expanded(
-          child: ListView.builder(
-            itemCount: SurahNameArabic.length,
-            itemBuilder: (contex, index) {
-              return Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    padding: EdgeInsets.only(left: 5),
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Image.asset("assets/images/quran_image.png"),
+          Expanded(
+            child: ListView.separated(
+              separatorBuilder: (context, index) {
+                return DividerLine();
+              },
+              itemCount: SurahNameArabic.length,
+              itemBuilder: (contex, index) {
+                return Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, QuranDetailsView.routName,
+                            arguments: SuraDetails(
+                              index: index,
+                              suraName: SurahNameArabic[index],
+                            ));
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 10),
+                        padding: const EdgeInsets.only(left: 5),
+                        height: 60,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset("assets/images/pngwing.com.png"),
-                            Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "${index + 1}",
-                                  style: theme.textTheme.titleMedium
-                                      ?.copyWith(fontSize: 20),
-                                )),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Image.asset("assets/images/pngwing.com.png"),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "${index + 1}",
+                                    style: theme.textTheme.titleMedium
+                                        ?.copyWith(fontSize: 20),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextTitle(
+                              text: SurahNameEnglish[index],
+                              index: index,
+                            ),
+                            TextTitle(
+                              text: SurahNameArabic[index],
+                              index: index,
+                            ),
                           ],
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.1,
-                        ),
-                        TextTitle(text: "${SurahNameEnglish[index]}"),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.1,
-                        ),
-                        TextTitle(text: "${SurahNameArabic[index]}"),
-                      ],
+                      ),
                     ),
-                  ),
-                  DividerLine(),
-                ],
-              );
-            },
+                  ],
+                );
+              },
+            ),
           ),
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
+}
+
+class SuraDetails {
+  String suraName;
+  int index;
+
+  SuraDetails({required this.suraName, required this.index});
 }
