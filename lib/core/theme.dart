@@ -7,11 +7,12 @@ class ThemeApplications {
       scaffoldBackgroundColor: transparentColor,
     appBarTheme: AppBarTheme(
       backgroundColor: transparentColor,
-        elevation: 0,
-        centerTitle: true,
-        iconTheme: IconThemeData(
-          color: blackColor,
-        )),
+      elevation: 0,
+      centerTitle: true,
+      iconTheme: IconThemeData(
+        color: blackColor,
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: primaryLight,
         selectedItemColor: blackColor,
