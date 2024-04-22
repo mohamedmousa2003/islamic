@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/hadeth/hadith_details_view.dart';
+import 'package:islamic/pages/hadeth/widget/Divider.dart';
 
 class Hadeth extends StatelessWidget {
   @override
@@ -8,23 +8,18 @@ class Hadeth extends StatelessWidget {
     var theme = Theme.of(context);
     String name = "الحديث رقم";
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+      ),
       body: Column(
         children: [
           Image.asset("assets/images/ahadeth_image.png"),
-          Divider(
-            height: 2,
-            color: primaryLight,
-            thickness: 2,
-          ),
+          const DividerHadith(),
           Text(
             "الأحاديث",
             style: theme.textTheme.titleLarge,
           ),
-          Divider(
-            height: 5,
-            color: primaryLight,
-            thickness: 2,
-          ),
+          const DividerHadith(),
           Expanded(
               child: ListView.builder(
             itemCount: 20,
@@ -36,14 +31,14 @@ class Hadeth extends StatelessWidget {
                       Navigator.pushNamed(context, HadithDetailsView.routName,
                           arguments: HadithDetails(name: name, index: index));
                     },
-                    child: Text(
-                      "$name  ${index + 1} ",
-                      style: theme.textTheme.titleMedium,
-                      textAlign: TextAlign.center,
-                    )),
-              );
-            },
-          ))
+                        child: Text(
+                          "$name  ${index + 1} ",
+                          style: theme.textTheme.titleMedium,
+                          textAlign: TextAlign.center,
+                        )),
+                  );
+                },
+              ))
         ],
       ),
     );
