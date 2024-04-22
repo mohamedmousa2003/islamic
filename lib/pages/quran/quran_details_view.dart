@@ -48,7 +48,7 @@ class QuranDetailsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  args.suraName,
+                  "سورة ${args.suraName}",
                   style: theme.textTheme.titleLarge,
                 ),
                 Divider(
