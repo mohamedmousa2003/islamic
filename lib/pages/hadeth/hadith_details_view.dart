@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/hadeth/hadeth_screen.dart';
 
-class HadithDetailsView extends StatelessWidget {
+class HadithDetailsView extends StatefulWidget {
   static String routName = "hadith";
 
+  @override
+  State<HadithDetailsView> createState() => _HadithDetailsViewState();
+}
+
+class _HadithDetailsViewState extends State<HadithDetailsView> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
@@ -36,7 +41,7 @@ class HadithDetailsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "${args.name} ${args.index + 1}",
+                  args.name,
                   style: theme.textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -46,6 +51,18 @@ class HadithDetailsView extends StatelessWidget {
                   height: 5,
                   indent: mediaQuery.width * 0.08,
                   endIndent: mediaQuery.width * 0.08,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return Text(
+                        textDirection: TextDirection.rtl,
+                        args.content[index],
+                        style: theme.textTheme.titleMedium,
+                      );
+                    },
+                    itemCount: 1,
+                  ),
                 ),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:islamic/pages/hadeth/hadith_details_view.dart';
 import 'package:islamic/pages/home_screen/home_screen.dart';
 import 'package:islamic/pages/quran/quran_details_view.dart';
 import 'package:islamic/pages/splach_screen.dart';
+import 'package:islamic/pages/test.dart';
 
 import 'core/theme.dart';
 
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Islamic',
       theme: ThemeApplications.light,
-      initialRoute: Splash.routName,
+      initialRoute: SplashMousa.routName,
       routes: {
+        SplashMousa.routName: (context) => Splash(),
         Splash.routName: (context) => const Splash(),
         Home.routeName: (context) => Home(),
         QuranDetailsView.routName: (context) => QuranDetailsView(),
         HadithDetailsView.routName: (context) => HadithDetailsView(),
-        //Test.routeName:(context) => Test(),
+        //TabView.routeName:(context) => TabView(),
       },
     );
   }
