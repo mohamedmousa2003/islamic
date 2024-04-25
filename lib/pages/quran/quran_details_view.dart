@@ -34,7 +34,6 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
         ),
       ),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
               "Islamic",
@@ -71,10 +70,24 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                         )
                       : ListView.builder(
                           itemCount: allVerses.length,
-                          itemBuilder: (context, index) => Text(
-                            "${allVerses[index]} ${index + 1}",
-                            style: theme.textTheme.titleMedium,
+                          itemBuilder: (context, index) => Column(
                             textDirection: TextDirection.rtl,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4),
+                                child: Text(
+                                  "${allVerses[index]} (${index + 1})",
+                                  style: theme.textTheme.titleMedium,
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+                              Divider(
+                                color: whiteColor,
+                                thickness: 3,
+                              )
+                            ],
                           ),
                         ),
                 ),
