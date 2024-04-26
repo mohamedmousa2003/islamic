@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/pages/hadeth/hadith_details_view.dart';
 import 'package:islamic/pages/home_screen/home_screen.dart';
 import 'package:islamic/pages/quran/quran_details_view.dart';
@@ -21,9 +22,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Islamic',
       theme: ThemeApplications.light,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale("ar"),
       initialRoute: SplashMousa.routName,
       routes: {
-        SplashMousa.routName: (context) => Splash(),
+        SplashMousa.routName: (context) => const Splash(),
         Splash.routName: (context) => const Splash(),
         Home.routeName: (context) => Home(),
         QuranDetailsView.routName: (context) => QuranDetailsView(),

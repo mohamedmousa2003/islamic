@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/pages/hadeth/hadeth_screen.dart';
 import 'package:islamic/pages/quran/quran_screen.dart';
 import 'package:islamic/pages/radio/radio_screen.dart';
@@ -27,6 +28,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
+    var locale = AppLocalizations.of(context)!;
     return Stack(
       children: [
         Image.asset(
@@ -38,7 +40,7 @@ class _HomeState extends State<Home> {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              "Islamic",
+              locale.islami,
               style: theme.textTheme.titleLarge,
             ),
           ),
@@ -50,23 +52,23 @@ class _HomeState extends State<Home> {
               selectedIndex = value;
               setState(() {});
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: "Setting",
+                icon: const Icon(Icons.settings),
+                label: locale.setting,
               ),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/quran.png")),
-                  label: "Quran"),
+                  icon: const ImageIcon(AssetImage("assets/images/quran.png")),
+                  label: locale.quran),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/hadeth.png")),
-                  label: "Health"),
+                  icon: const ImageIcon(AssetImage("assets/images/hadeth.png")),
+                  label: locale.hadeth),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/radio.png")),
-                  label: "Radio"),
+                  icon: const ImageIcon(AssetImage("assets/images/radio.png")),
+                  label: locale.radio),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/sebha.png")),
-                  label: "Sebiha"),
+                  icon: const ImageIcon(AssetImage("assets/images/sebha.png")),
+                  label: locale.tasbeh),
             ],
           ),
         ),
