@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Islamic',
-      theme: ThemeApplications.light,
+      theme: ThemeApplications.themeLight,
+      darkTheme: ThemeApplications.themeDark,
+      themeMode: provider.appColor,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(provider.localeProvider),

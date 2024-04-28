@@ -4,9 +4,12 @@ import 'package:islamic/pages/hadeth/hadeth_screen.dart';
 import 'package:islamic/pages/quran/quran_screen.dart';
 import 'package:islamic/pages/radio/radio_screen.dart';
 import 'package:islamic/pages/setting/setting_screen.dart';
+import 'package:islamic/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/app_color.dart';
 import '../sebha/sebha.dart';
+
 class Home extends StatefulWidget {
   static String routeName = "home";
 
@@ -29,10 +32,11 @@ class _HomeState extends State<Home> {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
     var locale = AppLocalizations.of(context)!;
+    var provider = Provider.of<MyProvider>(context);
     return Stack(
       children: [
         Image.asset(
-          "assets/images/background_light.png",
+          provider.backgroundImage(),
           fit: BoxFit.fill,
           height: mediaQuery.height,
           width: mediaQuery.width,

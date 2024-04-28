@@ -28,18 +28,32 @@ class _SettingState extends State<Setting> {
             locale.language,
             style: theme.textTheme.bodyLarge,
           ),
-          builder(index: 0, locale: locale.arabic),
+          builder(
+              iconColor: provider.isDark() ? yellowColor : primaryLight,
+              borderColor: provider.isDark() ? yellowColor : primaryLight,
+              index: 0,
+              locale: provider.localeProvider == "en"
+                  ? locale.english
+                  : locale.arabic),
           Text(
             locale.theme_mode,
             style: theme.textTheme.bodyLarge,
           ),
-          builder(index: 1, locale: locale.light),
+          builder(
+              iconColor: provider.isDark() ? yellowColor : primaryLight,
+              borderColor: provider.isDark() ? yellowColor : primaryLight,
+              index: 1,
+              locale: locale.light),
         ],
       ),
     );
   }
 
-  builder({required String locale, required int index}) {
+  builder(
+      {required String locale,
+      required int index,
+      required Color borderColor,
+      required iconColor}) {
     return InkWell(
       onTap: () {
         index == 0
@@ -52,7 +66,7 @@ class _SettingState extends State<Setting> {
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            border: Border.all(color: primaryLight, width: 3, strokeAlign: 5)),
+            border: Border.all(color: borderColor, width: 3, strokeAlign: 5)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -60,7 +74,10 @@ class _SettingState extends State<Setting> {
               locale,
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            const Icon(Icons.arrow_downward)
+            Icon(
+              Icons.arrow_downward,
+              color: iconColor,
+            )
           ],
         ),
       ),

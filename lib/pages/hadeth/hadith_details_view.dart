@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/hadeth/hadeth_screen.dart';
+import 'package:islamic/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadithDetailsView extends StatefulWidget {
   static String routName = "hadith";
@@ -17,11 +19,12 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
     var theme = Theme.of(context);
     var locale = AppLocalizations.of(context)!;
     var args = ModalRoute.of(context)?.settings.arguments as HadithDetails;
+    var provider = Provider.of<MyProvider>(context);
     // TODO: implement build
     return Stack(
       children: [
         Image.asset(
-          "assets/images/background_light.png",
+          provider.backgroundImage(),
           fit: BoxFit.fill,
           height: mediaQuery.height,
           width: mediaQuery.width,
@@ -38,7 +41,8 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
                 horizontal: mediaQuery.width * 0.05,
                 vertical: mediaQuery.height * 0.08),
             decoration: BoxDecoration(
-                color: primaryLight, borderRadius: BorderRadius.circular(8)),
+                color: provider.isDark() ? primaryDark : primaryLight,
+                borderRadius: BorderRadius.circular(8)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -60,7 +64,9 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
                       return Text(
                         textDirection: TextDirection.rtl,
                         args.content[index],
-                        style: theme.textTheme.titleMedium,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: provider.isDark() ? yellowColor : whiteColor,
+                        ),
                       );
                     },
                     itemCount: 1,
