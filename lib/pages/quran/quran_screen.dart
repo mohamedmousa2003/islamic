@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/quran/quran_details_view.dart';
 import 'package:islamic/pages/quran/widget/text.dart';
+import 'package:islamic/providers/my_provider.dart';
 import 'package:islamic/widget/dvider.dart';
+import 'package:provider/provider.dart';
 
 class Quran extends StatelessWidget {
   List<String> SurahNameArabic = [
@@ -240,6 +243,7 @@ class Quran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var provider = Provider.of<MyProvider>(context);
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -283,7 +287,11 @@ class Quran extends StatelessWidget {
                                   child: Text(
                                     "${index + 1}",
                                     style: theme.textTheme.titleMedium
-                                        ?.copyWith(fontSize: 20),
+                                        ?.copyWith(
+                                            fontSize: 20,
+                                            color: provider.isDark()
+                                                ? primaryDark
+                                                : primaryLight),
                                   ),
                                 ),
                               ],

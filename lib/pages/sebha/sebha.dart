@@ -1,7 +1,9 @@
 import 'package:audiofileplayer/audiofileplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic/core/app_color.dart';
+import 'package:islamic/providers/my_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class Sebha extends StatefulWidget {
   @override
@@ -22,6 +24,7 @@ class _SebhaState extends State<Sebha> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var provider = Provider.of<MyProvider>(context);
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,10 +58,11 @@ class _SebhaState extends State<Sebha> {
                 animationDuration: 5000,
                 percent: value / 33,
                 center: CircleAvatar(
-                    backgroundColor: primaryLight,
+                    backgroundColor:
+                        provider.isDark() ? yellowColor : primaryLight,
                     radius: 60,
                     child: Text(text[index])),
-                progressColor: primaryLight,
+                progressColor: provider.isDark() ? yellowColor : primaryLight,
               ),
             ),
           ),

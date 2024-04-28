@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/quran/quran_screen.dart';
+import 'package:islamic/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetailsView extends StatefulWidget {
   static String routName = "QuranDetails";
@@ -23,16 +25,16 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetails;
     var theme = Theme.of(context);
     var locale = AppLocalizations.of(context)!;
-
+    var provider = Provider.of<MyProvider>(context);
     if (allVerses.isEmpty) readFile(args.index);
     return Container(
       width: mediaQuery.width,
       height: mediaQuery.height,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage(
-            "assets/images/background_light.png",
+            provider.backgroundImage(),
           ),
         ),
       ),
@@ -48,7 +50,9 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                 horizontal: mediaQuery.width * 0.05,
                 vertical: mediaQuery.height * 0.08),
             decoration: BoxDecoration(
-              color: primaryLight.withOpacity(0.8),
+              color: provider.isDark()
+                  ? primaryDark.withOpacity(0.8)
+                  : primaryLight.withOpacity(0.8),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
@@ -68,7 +72,7 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                   child: allVerses.isEmpty
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: primaryLight,
+                            color: provider.isDark() ? yellowColor : whiteColor,
                           ),
                         )
                       : ListView.builder(
@@ -82,7 +86,11 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                                     const EdgeInsets.symmetric(horizontal: 4),
                                 child: Text(
                                   "${allVerses[index]} (${index + 1})",
-                                  style: theme.textTheme.titleMedium,
+                                  style: theme.textTheme.titleMedium?.copyWith(
+                                    color: provider.isDark()
+                                        ? yellowColor
+                                        : whiteColor,
+                                  ),
                                   textDirection: TextDirection.rtl,
                                 ),
                               ),

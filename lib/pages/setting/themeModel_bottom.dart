@@ -16,7 +16,7 @@ class ThemeModelBottom extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       decoration: BoxDecoration(
-        color: primaryLight,
+        color: whiteColor,
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       ),
@@ -24,26 +24,50 @@ class ThemeModelBottom extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           InkWell(
-              onTap: () {},
+              onTap: () {
+                provider.changeColors(ThemeMode.light);
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     locale.light,
                     style: theme.textTheme.bodyLarge?.copyWith(
-                      color: provider.localeProvider == ""
-                          ? primaryLight
-                          : blackColor,
+                      color: provider.isDark() ? primaryDark : primaryLight,
                     ),
                   ),
+                  provider.isDark()
+                      ? const SizedBox.shrink()
+                      : Icon(
+                          Icons.done,
+                          color: provider.isDark() ? primaryDark : primaryLight,
+                        ),
                 ],
               )),
           const SizedBox(
             height: 50,
           ),
-          Text(
-            locale.dark,
-            style: theme.textTheme.bodyLarge,
+          InkWell(
+            onTap: () {
+              provider.changeColors(ThemeMode.dark);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  locale.dark,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: provider.isDark() ? yellowColor : primaryDark,
+                  ),
+                ),
+                provider.isDark()
+                    ? Icon(
+                        Icons.done,
+                        color: provider.isDark() ? yellowColor : primaryDark,
+                      )
+                    : const SizedBox.shrink()
+              ],
+            ),
           )
         ],
       ),

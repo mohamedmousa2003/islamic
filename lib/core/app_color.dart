@@ -8,3 +8,4 @@ Color whiteColor = Colors.white;
 
 /// Color Dark
 Color primaryDark = const Color(0xff141A2E);
+Color yellowColor = const Color(0xffFACC1D);
