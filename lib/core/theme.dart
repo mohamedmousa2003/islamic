@@ -33,6 +33,10 @@ class ThemeApplications {
         fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
+      bodyLarge: TextStyle(
+        fontSize: 27,
+        fontWeight: FontWeight.bold,
+      ),
     ),
   );
 }

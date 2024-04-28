@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/quran/quran_screen.dart';
 
@@ -21,6 +22,8 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
     var mediaQuery = MediaQuery.of(context).size;
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetails;
     var theme = Theme.of(context);
+    var locale = AppLocalizations.of(context)!;
+
     if (allVerses.isEmpty) readFile(args.index);
     return Container(
       width: mediaQuery.width,
@@ -36,7 +39,7 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
       child: Scaffold(
           appBar: AppBar(
             title: Text(
-              "Islamic",
+              locale.islami,
               style: theme.textTheme.titleLarge,
             ),
           ),

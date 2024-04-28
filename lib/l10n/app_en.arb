@@ -4,8 +4,11 @@
     "radio" : "Radio" ,
     "tasbeh" : "Tasbeh",
     "hadeth" : "Hadeth",
+    "all_hadeth" : "All Hadeth",
     "quran" : "Quran",
     "language" : "Language" ,
+    "english" : "English",
+    "arabic" : "Arabic",
     "theme_mode" : "Theme Mode",
     "dark" : "Dark",
     "light" : "Light"

@@ -4,8 +4,11 @@
     "radio" : "الراديو" ,
     "tasbeh" : "التسبيح",
     "hadeth" : "الأحاديث" ,
+    "all_hadeth" : "الأحاديث",
     "quran" : "القرآن",
     "language" : "اللغة" ,
+    "english" : "الانجليزية",
+     "arabic" : "العربية",
    "theme_mode" : "النمط",
     "dark" : "ليلي",
     "light" : "نهاري"
