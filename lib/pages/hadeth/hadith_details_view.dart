@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/core/app_color.dart';
 import 'package:islamic/pages/hadeth/hadeth_screen.dart';
 
@@ -14,6 +15,7 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var locale = AppLocalizations.of(context)!;
     var args = ModalRoute.of(context)?.settings.arguments as HadithDetails;
     // TODO: implement build
     return Stack(
@@ -27,7 +29,7 @@ class _HadithDetailsViewState extends State<HadithDetailsView> {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              "Islamic",
+              locale.islami,
               style: theme.textTheme.titleLarge,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/pages/hadeth/hadith_details_view.dart';
 import 'package:islamic/pages/hadeth/widget/Divider.dart';
 
@@ -15,6 +16,7 @@ class _HadethState extends State<Hadeth> {
   Widget build(BuildContext context) {
     if (allHadith.isEmpty) loadHadith();
     var theme = Theme.of(context);
+    var locale = AppLocalizations.of(context)!;
     String name = "الحديث رقم";
     return Scaffold(
       appBar: AppBar(
@@ -25,7 +27,7 @@ class _HadethState extends State<Hadeth> {
           Image.asset("assets/images/ahadeth_image.png"),
           const DividerHadith(),
           Text(
-            "الأحاديث",
+            locale.all_hadeth,
             style: theme.textTheme.titleLarge,
           ),
           const DividerHadith(),
