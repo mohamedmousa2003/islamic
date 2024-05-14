@@ -260,11 +260,14 @@ class Quran extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, QuranDetailsView.routName,
-                            arguments: SuraDetails(
-                              index: index,
-                              suraName: SurahNameArabic[index],
-                            ));
+                        Navigator.pushNamed(
+                          context,
+                          QuranDetailsView.routName,
+                          arguments: SuraDetails(
+                            index: index,
+                            suraName: SurahNameArabic[index],
+                          ),
+                        );
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(
