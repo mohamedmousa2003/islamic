@@ -27,6 +27,7 @@ class _LanguageBottomState extends State<LanguageBottom> {
           InkWell(
               onTap: () {
                 provider.changeLanguage("en");
+                Navigator.pop(context);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,6 +54,7 @@ class _LanguageBottomState extends State<LanguageBottom> {
           InkWell(
               onTap: () {
                 provider.changeLanguage("ar");
+                Navigator.pop(context);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

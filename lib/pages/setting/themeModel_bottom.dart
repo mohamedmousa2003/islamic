@@ -26,6 +26,7 @@ class ThemeModelBottom extends StatelessWidget {
           InkWell(
               onTap: () {
                 provider.changeColors(ThemeMode.light);
+                Navigator.pop(context);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,6 +51,7 @@ class ThemeModelBottom extends StatelessWidget {
           InkWell(
             onTap: () {
               provider.changeColors(ThemeMode.dark);
+              Navigator.pop(context);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
